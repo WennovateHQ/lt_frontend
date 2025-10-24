@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Registration Debug</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Detailed Registration Debug</h1>
+    <div id="results"></div>
+    
+    <script>
+        async function testRegistration() {
+            const results = document.getElementById('results');
+            
+            const testData = {
+                email: 'debug' + Date.now() + '@example.com',
+                password: 'password123',
+                firstName: 'Debug',
+                lastName: 'User',
+                userType: 'TALENT'
+            };
+            
+            console.log('Sending registration data:', testData);
+            results.innerHTML = '<p>Testing registration...</p>';
+            
+            try {
+                const response = await axios.post('http://localhost:5000/api/auth/register', testData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                console.log('Success response:', response);
+                
+                results.innerHTML = `
+                    <div style="background: #d4edda; padding: 20px; margin: 20px 0; border-radius: 5px;">
+                        <h3>✅ SUCCESS</h3>
+                        <p><strong>Status:</strong> ${response.status}</p>
+                        <p><strong>Response:</strong></p>
+                        <pre>${JSON.stringify(response.data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Registration failed:', error);
+                console.error('Error response:', error.response);
+                console.error('Error data:', error.response?.data);
+                
+                results.innerHTML = `
+                    <div style="background: #f8d7da; padding: 20px; margin: 20px 0; border-radius: 5px;">
+                        <h3>❌ FAILED</h3>
+                        <p><strong>Status:</strong> ${error.response?.status || 'No status'}</p>
+                        <p><strong>Status Text:</strong> ${error.response?.statusText || 'No status text'}</p>
+                        <p><strong>Error Message:</strong> ${error.message}</p>
+                        <p><strong>Response Data:</strong></p>
+                        <pre>${JSON.stringify(error.response?.data || 'No response data', null, 2)}</pre>
+                        <p><strong>Request Data Sent:</strong></p>
+                        <pre>${JSON.stringify(testData, null, 2)}</pre>
+                        <p><strong>Full Error Object:</strong></p>
+                        <pre>${JSON.stringify({
+                            name: error.name,
+                            message: error.message,
+                            code: error.code,
+                            status: error.response?.status,
+                            statusText: error.response?.statusText,
+                            headers: error.response?.headers
+                        }, null, 2)}</pre>
+                    </div>
+                `;
+            }
+        }
+        
+        // Auto-run test
+        window.onload = testRegistration;
+    </script>
+</body>
+</html>

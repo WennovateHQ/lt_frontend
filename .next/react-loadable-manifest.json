@@ -1,0 +1,35 @@
+{
+  "app\\(dashboard)\\business\\contracts\\[id]\\page.tsx -> @/lib/api/client": {
+    "id": 26305,
+    "files": []
+  },
+  "app\\(dashboard)\\business\\contracts\\page.tsx -> @/lib/api/client": {
+    "id": 26305,
+    "files": [
+      "static/chunks/3464-6135eca2ed0c5b60.js",
+      "static/chunks/6305.9d6bfe31b7696884.js"
+    ]
+  },
+  "app\\(dashboard)\\business\\projects\\[id]\\contracts\\create\\page.tsx -> @/lib/api/client": {
+    "id": 26305,
+    "files": [
+      "static/chunks/3464-6135eca2ed0c5b60.js",
+      "static/chunks/6305.9d6bfe31b7696884.js"
+    ]
+  },
+  "app\\(dashboard)\\talent\\contracts\\page.tsx -> @/lib/api/client": {
+    "id": 26305,
+    "files": [
+      "static/chunks/3464-6135eca2ed0c5b60.js",
+      "static/chunks/6305.9d6bfe31b7696884.js"
+    ]
+  },
+  "components\\business\\application-review-interface.tsx -> @/lib/api/client": {
+    "id": 26305,
+    "files": []
+  },
+  "components\\business\\contract-actions.tsx -> @/lib/api/client": {
+    "id": 26305,
+    "files": []
+  }
+}
